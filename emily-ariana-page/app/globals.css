@@ -1,0 +1,107 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Fonts */
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-heading: var(--font-playfair), Georgia, serif;
+
+  /* Custom pastel palette */
+  --color-cream: #faf7f2;
+  --color-lavender: #ede8f5;
+  --color-rose: #f5d6d0;
+  --color-sage: #d6eae0;
+  --color-ink: #1c1a18;
+  --color-muted: #8a8580;
+
+  /* Semantic tokens mapped to palette */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent-rose: var(--accent-rose);
+  --color-accent-sage: var(--accent-sage);
+  --color-accent-lavender: var(--accent-lavender);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+:root {
+  --background: #faf7f2;
+  --foreground: #1c1a18;
+  --surface: #ede8f5;
+  --card: #ffffff;
+  --card-foreground: #1c1a18;
+  --border: rgba(28, 26, 24, 0.1);
+  --muted-foreground: #8a8580;
+  --accent-rose: #f5d6d0;
+  --accent-sage: #d6eae0;
+  --accent-lavender: #ede8f5;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Hero marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* Spinning vinyl */
+@keyframes spin-vinyl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-vinyl {
+  animation: spin-vinyl 4s linear infinite;
+}
+.animate-spin-vinyl.is-paused {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin-vinyl {
+    animation: none;
+  }
+}
