@@ -4,9 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  basePath: '/Portafolio-WEB',
+  assetPrefix: '/Portafolio-WEB',
 }
 
 export default nextConfig
